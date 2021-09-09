@@ -258,7 +258,7 @@ export const setFiltersActionCreator = (filters) => ({type: SET_FILTERS, filters
 export const setOrdersHistoriesThunkCreator = (getParams, count) => async (dispatch) => {
     let response = await prestashopAPI.getOrdersHistories(getParams);
 
-    if (response.order_histories === undefined && response.order_histories === null) {
+    if (response.order_histories === undefined || response.order_histories === null) {
         Promise.reject(response.error_msg);
     }
     else {
