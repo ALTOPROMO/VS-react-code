@@ -75,16 +75,16 @@ export default class FrontendRequestListContainer extends React.PureComponent {
 		this.setState({dateTimeFrom: new moment(date)});
 	}
 
-    /**
+        /**
 	 * Обработка изменения поля номера телефона.
 	 *
 	 * @param {Object} EventSource Событие при изменении поля с телефоном
 	 */
-    onPhoneNumberChange(evt) {
+    	onPhoneNumberChange(evt) {
 		this.setState({phoneNumber: evt.target.value});
 	}
 
-    /**
+    	/**
 	 * Обработка изменения поля текста заявки.
 	 *
 	 * @param {Object} EventSource Событие при изменении поля с текстом заявки
