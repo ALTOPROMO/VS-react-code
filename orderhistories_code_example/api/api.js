@@ -43,7 +43,7 @@ export const prestashopAPI = {
         }
 
         return instanceModule.get(``, {params: params}).then( response => {
-            return response.data;
+            return response;
         });
     },
 
@@ -65,7 +65,7 @@ export const prestashopAPI = {
         }
 
         return instanceModule.put(``, postParams).then( response => {
-            return response.data;
+            return response;
         });
     }
 }

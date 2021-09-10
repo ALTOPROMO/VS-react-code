@@ -258,8 +258,11 @@ export const setFiltersActionCreator = (filters) => ({type: SET_FILTERS, filters
 export const setOrdersHistoriesThunkCreator = (getParams, count) => async (dispatch) => {
     let response = await prestashopAPI.getOrdersHistories(getParams);
 
-    if (response.order_histories === undefined || response.order_histories === null) {
-        Promise.reject(response.error_msg);
+    if (response.status >= 400) {
+        Promise.reject(response.data);
+    }
+    else if (response.data.order_histories === undefined || response.data.order_histories === null) {
+        Promise.reject(response.error_msg); 
     }
     else {
         dispatch(setOrdersHistoriesActionCreator(response.order_histories));
@@ -336,13 +339,16 @@ export const setSortThunkCreator = (sort, page_num, count, filters, fields) => a
  * @returns {Function} Асинхронная функция для диспетчеризации экшенов
  */
 export const updateCommentThunkCreator = (id_order_history, comment) => async (dispatch) => {
-    let response_update = await prestashopAPI.updateComment(id_order_history, comment);
+    let response = await prestashopAPI.updateComment(id_order_history, comment);
 
-    if (response_update.affected_rows > 0) {
-        dispatch(updateCommentActionCreator(id_order_history, comment));
+    if (response.status >= 400) {
+        Promise.reject(response.data);
+    }
+    else if (response.data.affected_rows == 0) {
+        Promise.reject(response.data.error_msg);
     }
     else {
-        Promise.reject(response_update.error_msg);
+        dispatch(updateCommentActionCreator(id_order_history, comment));
     }
 }
 
