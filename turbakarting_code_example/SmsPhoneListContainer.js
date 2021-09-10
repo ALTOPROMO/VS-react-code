@@ -57,16 +57,16 @@ export default class SmsPhoneListContainer extends React.PureComponent {
 		FrontendRequestStore.removeSmsPhoneFilteredListener(this.onLoad);
 	}
 
-    /**
+        /**
 	 * Обработка изменения поля номера телефона.
 	 *
 	 * @param {Object} EventSource Событие при изменении поля с телефоном
 	 */
-    onPhoneNumberChange(evt) {
+        onPhoneNumberChange(evt) {
 		this.setState({phoneNumber: evt.target.value});
 	}
 
-    /**
+        /**
 	 * Обработка изменения поля кода купона.
 	 *
 	 * @param {Object} EventSource Событие при изменении поля с кодом купона
@@ -128,36 +128,36 @@ export default class SmsPhoneListContainer extends React.PureComponent {
                             <input
                                 name="couponCode"
                                 type="text"
-								onChange={this.onCouponCodeChange}
+				onChange={this.onCouponCodeChange}
                             />
                         </FormGroup>
                     </Col>
                 </Row>
 
-			    <Row>
-				<Col md={1}>
-					<Button onClick={this.onUpdateBtnClick}>Обновить</Button>
-				</Col>
-				<Col md={1}>
-					{
-						this.state.isLoading
-							? <React.Fragment>
-								<Glyphicon glyph="refresh"/> Загрузка...
-							</React.Fragment>
-							: null
-					}
-				</Col>
-			</Row>
-
+	        <Row>
+		    <Col md={1}>
+			<Button onClick={this.onUpdateBtnClick}>Обновить</Button>
+		    </Col>
+		    <Col md={1}>
 			{
-				(this.state.items !== null)
-					? (this.state.items.size > 0)
-						? <SmsPhoneList smsPhones={this.state.items}/>
-						: <Alert bsStyle="warning">
-							Отправленные смс отсутствуют
-						</Alert>
-					: null
+			    this.state.isLoading
+			    ? <React.Fragment>
+			          <Glyphicon glyph="refresh"/> Загрузка...
+			      </React.Fragment>
+			    : null
 			}
+		    </Col>
+		</Row>
+
+		{
+		    (this.state.items !== null)
+		    ? (this.state.items.size > 0)
+			? <SmsPhoneList smsPhones={this.state.items}/>
+			: <Alert bsStyle="warning">
+				Отправленные смс отсутствуют
+			  </Alert>
+		    : null
+		}
 
 		</div>;
 	}
