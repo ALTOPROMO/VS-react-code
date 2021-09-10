@@ -161,36 +161,36 @@ export default class FrontendRequestListContainer extends React.PureComponent {
                             <input
                                 name="requestText"
                                 type="text"
-								onChange={this.onRequestTextChange}
+				onChange={this.onRequestTextChange}
                             />
                         </FormGroup>
                     </Col>
                 </Row>
 
-			    <Row>
-					<Col md={1}>
-						<Button onClick={this.onUpdateBtnClick}>Обновить</Button>
-					</Col>
-					<Col md={1}>
-						{
-							this.state.isLoading
-								? <React.Fragment>
-									<Glyphicon glyph="refresh"/> Загрузка...
-								</React.Fragment>
-								: null
-						}
-					</Col>
-				</Row>
-
+		<Row>
+		    <Col md={1}>
+			<Button onClick={this.onUpdateBtnClick}>Обновить</Button>
+		    </Col>
+		    <Col md={1}>
 			{
-				(this.state.items !== null)
-					? (this.state.items.size > 0)
-						? <FrontendRequestList frontendRequests={this.state.items}/>
-						: <Alert bsStyle="warning">
-							Заявки отсутствуют
-						</Alert>
-					: null
+			    this.state.isLoading
+			    ? <React.Fragment>
+				<Glyphicon glyph="refresh"/> Загрузка...
+			      </React.Fragment>
+			    : null
 			}
+		    </Col>
+		</Row>
+
+		{
+		    (this.state.items !== null)
+		    ? (this.state.items.size > 0)
+			? <FrontendRequestList frontendRequests={this.state.items}/>
+			: <Alert bsStyle="warning">
+			    Заявки отсутствуют
+			</Alert>
+		    : null
+		}
 
 		</div>;
 	}
