@@ -18,11 +18,11 @@ export default class SmsPhoneListContainer extends React.PureComponent {
 		super(props);
 
 		this.state = {
-			isLoading:         true,
-			phoneNumber:       '',
-			couponCode:        '',
-			items:             null,
-			errors:            [],
+			isLoading:   true,
+			phoneNumber: '',
+			couponCode:  '',
+			items:       null,
+			errors:      [],
 		};
 		FrontendRequestAction.smsList(this.getListRequest());
 
@@ -62,7 +62,7 @@ export default class SmsPhoneListContainer extends React.PureComponent {
 	 *
 	 * @param {Object} EventSource Событие при изменении поля с телефоном
 	 */
-     onPhoneNumberChange(evt) {
+    onPhoneNumberChange(evt) {
 		this.setState({phoneNumber: evt.target.value});
 	}
 

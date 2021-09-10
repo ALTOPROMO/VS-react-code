@@ -24,12 +24,12 @@ export default class FrontendRequestListContainer extends React.PureComponent {
 		dateTimeFrom.utcOffset(Config.localTimezoneOffset);
 
 		this.state = {
-			isLoading:         true,
-			dateTimeFrom:      dateTimeFrom,
-			phoneNumber:       '',
-			requestText:       '',
-			items:             null,
-			errors:            [],
+			isLoading:    true,
+			dateTimeFrom: dateTimeFrom,
+			phoneNumber:  '',
+			requestText:  '',
+			items:        null,
+			errors:       [],
 		};
 		FrontendRequestAction.list(this.getListRequest());
 
@@ -46,9 +46,9 @@ export default class FrontendRequestListContainer extends React.PureComponent {
 	getListRequest() {
 		/** @type {FrontendRequestListRequest} */
 		return {
-			dateTimeFrom:      this.state.dateTimeFrom.toISOString(),
-			phoneNumber:       this.state.phoneNumber,
-			requestText:       this.state.requestText,
+			dateTimeFrom: this.state.dateTimeFrom.toISOString(),
+			phoneNumber:  this.state.phoneNumber,
+			requestText:  this.state.requestText,
 		};
 	}
 
@@ -80,7 +80,7 @@ export default class FrontendRequestListContainer extends React.PureComponent {
 	 *
 	 * @param {Object} EventSource Событие при изменении поля с телефоном
 	 */
-     onPhoneNumberChange(evt) {
+    onPhoneNumberChange(evt) {
 		this.setState({phoneNumber: evt.target.value});
 	}
 
